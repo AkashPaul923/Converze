@@ -1,12 +1,17 @@
-require('dotenv').config();
-const express = require('express')
-const app = express()
-const port = process.env.PORT || 5000
+import dotenv from "dotenv";
 
-app.get('/', (req, res) => {
-  res.send('Wellcome to CONVERZE Server!')
-})
+import express from "express";
+const app = express();
+dotenv.config({});
+const port = process.env.PORT || 5000;
+
+import connectDB from "./config/database.js";
+
+app.get("/", (req, res) => {
+    res.send("Wellcome to CONVERZE Server!");
+});
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+    connectDB();
+    console.log(`Example app listening on port ${port}`);
+});

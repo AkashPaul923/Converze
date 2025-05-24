@@ -18,4 +18,4 @@ const conversationModel = new mongoose.Schema(
     { timestamps: true }
 );
 
-export const conversation = mongoose.model("Coversation", conversationModel);
+export const Conversation = mongoose.model("Coversation", conversationModel);

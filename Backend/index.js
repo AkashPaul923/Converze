@@ -16,9 +16,9 @@ app.use(cookieParser());
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/message", messageRoute);
 
-// app.get("/", (req, res) => {
-//     res.send("Wellcome to CONVERZE Server!");
-// });
+app.get("/", (req, res) => {
+    res.send("Wellcome to CONVERZE Server!");
+});
 
 app.listen(port, () => {
     connectDB();

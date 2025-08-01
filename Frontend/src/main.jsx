@@ -3,11 +3,14 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import { BrowserRouter } from "react-router";
 import Router from "./router/router";
+import { Toaster } from "react-hot-toast";
+
 
 createRoot(document.getElementById("root")).render(
     <StrictMode>
         <BrowserRouter>
             <Router />
+            <Toaster/>
         </BrowserRouter>
     </StrictMode>
 );

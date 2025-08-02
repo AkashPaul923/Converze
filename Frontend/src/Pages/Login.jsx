@@ -1,16 +1,19 @@
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router";
+import { setAuthUser } from "../Redux/userSlice";
 
 const Login = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();
         const form = e.target;
         const username = form.username.value;
         const password = form.password.value;
-        const user = {
+        const userData = {
             username,
             password
         };
@@ -18,7 +21,7 @@ const Login = () => {
         try {
             const res = await axios.post(
                 "http://localhost:5000/api/v1/user/login",
-                user,
+                userData,
                 {
                     headers: {
                         "Content-Type": "application/json",
@@ -28,6 +31,7 @@ const Login = () => {
             );
             // console.log(res)
             if (res.status === 200) {
+                dispatch(setAuthUser(res.data));
                 toast.success("Login Successfully");
                 navigate("/");
             }
